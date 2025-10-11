@@ -27,4 +27,6 @@ production:
     <<: *primary
   cable:
     <<: *primary
+  cache:
+    <<: *primary
 
