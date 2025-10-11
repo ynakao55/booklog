@@ -1,0 +1,54 @@
+<%# タイトル %>
+<% content_for :title do %>
+  Books <span class="text-muted fs-6">(<%= @books.size %>)</span>
+<% end %>
+
+<%# ツールバー（[New book] + Filter）%>
+<% content_for :toolbar do %>
+  <div class="d-flex w-100 justify-content-between align-items-center">
+    <%= link_to "New book", new_book_path, class: "btn btn-primary btn-sm" %>
+
+    <div class="text-nowrap ms-3">
+      <strong>Filter:</strong>
+      <% active = params[:status].to_s %>
+      <%= link_to "All",    books_path,                   class: "ms-2 " + (active.blank? ? "fw-bold" : "") %> |
+      <%= link_to "Unread", books_path(status: :unread),  class: "ms-1 " + (active == "unread"  ? "fw-bold" : "") %> |
+      <%= link_to "Reading",books_path(status: :reading), class: "ms-1 " + (active == "reading" ? "fw-bold" : "") %> |
+      <%= link_to "Done",   books_path(status: :done),    class: "ms-1 " + (active == "done"    ? "fw-bold" : "") %>
+    </div>
+  </div>
+<% end %>
+
+<%# 本文（一覧テーブル）%>
+<% if @books.any? %>
+  <div class="table-responsive">
+    <table class="table table-sm align-middle mb-0">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Status</th>
+          <th>Note</th>
+          <th class="text-end">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @books.each do |book| %>
+          <tr>
+            <td><%= book.title %></td>
+            <td><%= book.author %></td>
+            <td><span class="badge text-bg-secondary"><%= book.status %></span></td>
+            <td><%= truncate(book.note.to_s, length: 11, omission: "…") %></td>
+            <td class="text-end">
+              <%= link_to "Show this book", book, class: "btn btn-outline-secondary btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div class="alert alert-info mb-0">
+    本がまだありません。<%= link_to "New book", new_book_path, class: "alert-link" %> から追加してください。
+  </div>
+<% end %>
