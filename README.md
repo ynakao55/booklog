@@ -3,9 +3,9 @@
 本のタイトル・著者・読書ステータスを管理するシンプルな CRUD アプリ。  
 Ruby on Rails（Rails 8 系） + PostgreSQL。Render.com にデプロイできます。
 
-> ✅ アプリURL / GitHub リポジトリはあなたのものに差し替えてください  
-> - App: `https://...` ←（あとで差し替え）  
-> - GitHub: `https://github.com/...` ←（あとで差し替え）
+> ✅ アプリURL / GitHub  
+> - App: `https://booklog-qznx.onrender.com/books`
+> - GitHub: `https://github.com/ynakao55/booklog`
 
 ---
 
