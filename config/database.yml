@@ -16,10 +16,6 @@ test:
   database: booklog_test
 
 production:
-  <<: *default
-  url: <%= ENV["dpg-d3jkfder433s739coue0-a.singapore-postgres.render.com"] %>
-  database: shorty_8uir
-  username: shorty
-  password: odc3Doogq8yBAOoayppkwIuyKoEwfOyx
-
+  url: <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
 
