@@ -1,23 +1,23 @@
 default: &default
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
+  encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS", 5) %>
 
 development:
   <<: *default
   database: booklog_dev
-  host: localhost
-  port: 5432
-  username: postgres
-  password: password
+  host: 127.0.0.1
+  port: 4000
+  username: root
+  password:
 
 test:
   <<: *default
   database: booklog_test
-  host: localhost
-  port: 5432
-  username: postgres
-  password: password
+  host: 127.0.0.1
+  port: 4000
+  username: root
+  password:
 
 production:
   primary: &primary
@@ -29,4 +29,3 @@ production:
     <<: *primary
   cache:
     <<: *primary
-
